@@ -22,7 +22,7 @@ class LFUCache(BaseCaching):
                 if (key in self.cache_data):
                     self.cache_data[key] = item
                 else:
-                    for k in self.cache_data.keys():
+                    for k in sorted(self.cache_data.keys()):
                         if k not in LFUCache.counter:
                             no_key_list.append(k)
                     if self.cache_data.keys() == LFUCache.counter.keys():
