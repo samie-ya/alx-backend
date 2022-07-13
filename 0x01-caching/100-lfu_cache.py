@@ -38,8 +38,6 @@ class LFUCache(BaseCaching):
             return None
         else:
             value = self.cache_data.get(key)
-            del self.cache_data[key]
-            self.cache_data[key] = value
             if key not in LFUCache.counter:
                 LFUCache.counter[key] = value
             return self.cache_data.get(key)
