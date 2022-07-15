@@ -25,8 +25,9 @@ class LFUCache(BaseCaching):
                     for k in sorted(self.cache_data.keys()):
                         if k not in LFUCache.counter:
                             no_key_list.append(k)
-                    if self.cache_data.keys() == LFUCache.counter.keys():
-                        no_key_list.append(list(self.cache_data.keys())[0])
+                    for k in sorted(self.cache_data.keys()):
+                        if k in LFUCache.counter:
+                            no_key_list.append(k)
                     first = no_key_list[0]
                     print("DISCARD: {}".format(first))
                     del self.cache_data[first]
@@ -38,6 +39,6 @@ class LFUCache(BaseCaching):
             return None
         else:
             value = self.cache_data.get(key)
-            if key not in LFUCache.counter:
+            if (key not in LFUCache.counter) and (key in self.cache_data):
                 LFUCache.counter[key] = value
-            return self.cache_data.get(key)
+            return value
