@@ -15,10 +15,10 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-@app.route('/')
-def basic():
-    """This will return simple page"""
-    return render_template('0-index.html')
+#@app.route('/')
+#def basic():
+#    """This will return simple page"""
+#    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
