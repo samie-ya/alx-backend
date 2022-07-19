@@ -53,7 +53,7 @@ def before_request():
     g.user = get_user()
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def basic():
     """This will return simple page"""
     return render_template('5-index.html', user=g.user)
