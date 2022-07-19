@@ -33,6 +33,7 @@ def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
+
 def get_user():
     """This function will check if login is given and return dict"""
     user = request.args.get('login_as')
@@ -52,7 +53,7 @@ def before_request():
     g.user = get_user()
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def basic():
     """This will return simple page"""
     return render_template('5-index.html', user=g.user)
