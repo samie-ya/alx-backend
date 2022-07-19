@@ -33,7 +33,6 @@ def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-
 def get_user():
     """This function will check if login is given and return dict"""
     user = request.args.get('login_as')
