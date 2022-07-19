@@ -10,15 +10,15 @@ babel = Babel(app)
 
 class Config(object):
     """This class will hold a list of supported languages"""
-    LANGUAGES = ["en", "fr"]
-    #BABEL_DEFAULT_LOCALE = 'en'
-    #BABEL_DEFAULT_TIMEZONE = 'UTC'
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 @app.route('/')
 def basic():
     """This will return simple page"""
-    return render_template('1-index.html')
+    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
