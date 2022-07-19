@@ -7,13 +7,14 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 
-class Config():
+class Config(object):
     """This class will hold a list of supported languages"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app.config.from_object('Config')
 babel = Babel(app)
 
 
