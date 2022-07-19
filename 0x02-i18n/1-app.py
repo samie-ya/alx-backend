@@ -11,8 +11,8 @@ babel = Babel(app)
 class Config(object):
     """This class will hold a list of supported languages"""
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    #BABEL_DEFAULT_LOCALE = 'en'
+    #BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 @app.route('/')
