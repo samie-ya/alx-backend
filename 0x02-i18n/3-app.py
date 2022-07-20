@@ -15,6 +15,7 @@ class Config():
 
 
 babel = Babel(app)
+app.config.from_object(Config)
 
 
 @babel.localeselector
