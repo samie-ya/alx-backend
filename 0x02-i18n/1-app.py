@@ -5,7 +5,6 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config(object):
@@ -15,10 +14,13 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-#@app.route('/')
-#def basic():
-#    """This will return simple page"""
-#    return render_template('0-index.html')
+babel = Babel(app)
+
+
+@app.route('/')
+def basic():
+    """This will return simple page"""
+    return render_template('1-index.html')
 
 
 if __name__ == "__main__":
