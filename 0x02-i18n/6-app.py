@@ -29,12 +29,14 @@ app.config.from_object(Config)
 def get_locale():
     """This function will select the best language for user"""
     locale = request.args.get('locale')
-    user = getattr(g, 'user', None)
+    user = get_user()
     if locale in Config.LANGUAGES:
         return locale
-    elif (locale not in Config.LANGUAGES) and (user is not None):
-        return user.locale
-    elif (user is None) and (locale not in Config.LANGUAGES):
+    elif (locale not in Config.LANGUAGES) and (user is not None) and\
+         (user['locale'] in Config.LANGUAGES):
+        return user['locale']
+    elif (user is None) and\
+         (locale not in Config.LANGUAGES):
         return request.accept_languages.best_match(Config.LANGUAGES)
     else:
         return Config.BABEL_DEFAULT_LOCALE
