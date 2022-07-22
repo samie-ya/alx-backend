@@ -56,7 +56,7 @@ def get_timezone():
             timezone = pytz.timezone(user['timezone'])
             return timezone
         elif (tz is None and user is None):
-            return Config.BABEL_DEFAULT_TIMEZONE
+            return pytz.timezone(Config.BABEL_DEFAULT_TIMEZONE)
     except pytz.exceptions.UnknownTimeZoneError:
         pass
 

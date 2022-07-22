@@ -57,7 +57,7 @@ def get_timezone():
             timezone = pytz.timezone(user['timezone'])
             return timezone
         elif (tz is None and user is None):
-            return Config.BABEL_DEFAULT_TIMEZONE
+            return pytz.timezone(Config.BABEL_DEFAULT_TIMEZONE)
     except pytz.exceptions.UnknownTimeZoneError:
         pass
 
@@ -85,8 +85,12 @@ def before_request():
 def basic():
     """This will return simple page"""
     date = datetime.now()
-    time = dates.format_datetime(date, locale=g.user['locale'])
-    return render_template('index.html', user=g.user, time=time)
+    locale = get_locale()
+    if locale:
+        time = dates.format_datetime(date, locale=locale)
+        return render_template('index.html', user=g.user, time=time)
+    else:
+        return render_template('index.html', user=g.user)
 
 
 if __name__ == "__main__":
